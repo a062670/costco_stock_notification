@@ -1,4 +1,5 @@
 const axios = require("axios");
+const moment = require("moment");
 
 let url =
   "https://www.costco.com.tw/Household-Pet-Supplies/Pet-Supplies/Other-Pet-Supplies/ARM-HAMMER-Double-Duty-Cat-Litter-1814kg/p/790216";
@@ -6,7 +7,7 @@ let url =
 check();
 
 function check() {
-  console.log(new Date());
+  console.log(moment().format("HH:mm"));
   axios
     .get(url)
     .then(response => {
@@ -17,7 +18,7 @@ function check() {
         }, 3000);
       } else {
         console.log("沒貨");
-        setTimeout(check, 10000);
+        setTimeout(check, 60000);
       }
     })
     .catch(error => {
